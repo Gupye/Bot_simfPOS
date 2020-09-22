@@ -256,7 +256,7 @@ def send_text(message):
 
             elif message.text.lower() == 'sqlm-> карты скидок':
                 markup_sql1m = types.ReplyKeyboardMarkup(row_width=2)
-                markup_sql1m.add('SQL-> карты скидок за вчера')
+                markup_sql1m.add('SQLm-> карты скидок за вчера')
                 markup_sql1m.add('->Назад')
                 dict_sql[message.chat.id] = '4m'
                 bot.send_message(message.chat.id,
@@ -266,7 +266,7 @@ def send_text(message):
 
             elif message.text.lower() == 'sqlm-> платежные карты':
                 markup_sql1m = types.ReplyKeyboardMarkup(row_width=2)
-                markup_sql1m.add('SQL-> платежные карты за вчера')
+                markup_sql1m.add('SQLm-> платежные карты за вчера')
                 markup_sql1m.add('->Назад')
                 dict_sql[message.chat.id] = '5m'
                 bot.send_message(message.chat.id,

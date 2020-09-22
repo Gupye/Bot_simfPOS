@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RK7QueryResult ServerVersion="7.6.2.205" XmlVersion="244" NetName="MIDSERV" Status="Ok" Processed="1">
+	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-09-19T19:58:36" WorkTime="47">
+		<LayoutResult LayoutCode="51" LayoutFilters="" DataSourceParams=""><BandRepTitle>
+<rhrow>
+<rhcol>Почасовой расход</rhcol>
+<rhcol>кассовый день 16.09.2020</rhcol>
+<rhcol>Смена 206</rhcol>
+<rhcol>19.09.2020 19:58:36</rhcol>
+</rhrow>
+</BandRepTitle>
+<DishDebit count = "17">
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+</DishDebit>
+<DishDebit count = "41">
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+<rbrow>
+</rbrow>
+</DishDebit>
+<DishDebit count = "24">
+<rhrow>
+<rhcol>----------------------------------------</rhcol>
+<rhcol>период</rhcol>
+<rhcol>чеков</rhcol>
+<rhcol>гостей</rhcol>
+<rhcol>сумма</rhcol>
+<rhcol>----------------------------------------</rhcol>
+</rhrow>
+<rbrow>
+<rbcol>00:00 - 00:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>01:00 - 01:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>02:00 - 02:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>03:00 - 03:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>04:00 - 04:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>05:00 - 05:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>06:00 - 06:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>07:00 - 07:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>08:00 - 08:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>09:00 - 09:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>10:00 - 10:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>11:00 - 11:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>12:00 - 12:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>13:00 - 13:59</rbcol>
+<rbcol>2</rbcol>
+<rbcol>2</rbcol>
+<rbcol>4360.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>14:00 - 14:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>15:00 - 15:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>16:00 - 16:59</rbcol>
+<rbcol>3</rbcol>
+<rbcol>9</rbcol>
+<rbcol>22750.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>17:00 - 17:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>18:00 - 18:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>19:00 - 19:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>20:00 - 20:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>21:00 - 21:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>22:00 - 22:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rbrow>
+<rbcol>23:00 - 23:59</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
+</rbrow>
+<rfrow>
+<rfcol>----------------------------------------</rfcol>
+<rfcol>Всего</rfcol>
+<rfcol>5</rfcol>
+<rfcol>11</rfcol>
+<rfcol>27110.00</rfcol>
+<rfcol>----------------------------------------</rfcol>
+</rfrow>
+</DishDebit>
+<BandPageFooter>
+<rfrow>
+<rfcol>7</rfcol>
+</rfrow>
+</BandPageFooter>
+		</LayoutResult>
+	</CommandResult>
+</RK7QueryResult>

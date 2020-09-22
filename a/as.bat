@@ -1,0 +1,1 @@
+xmltest.exe 127.0.0.1:1995 xmlquery.xml response.xml /Administrator:1

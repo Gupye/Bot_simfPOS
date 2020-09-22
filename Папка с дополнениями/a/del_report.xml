@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RK7QueryResult ServerVersion="7.6.2.205" XmlVersion="244" NetName="MIDSERV" Status="Ok" Processed="1">
+	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-09-19T01:56:42" WorkTime="63">
+		<LayoutResult LayoutCode="50" LayoutFilters="" DataSourceParams=""><BandRepTitle>
+<rhrow>
+<rhcol>Удаленные чеки</rhcol>
+<rhcol>кассовый день 16.09.2020</rhcol>
+<rhcol>Смена 206</rhcol>
+<rhcol>19.09.2020 1:56:42</rhcol>
+</rhrow>
+</BandRepTitle>
+<BandPageFooter>
+<rbrow>
+<rbcol>----------------------------------------</rbcol>
+</rbrow>
+<rfrow>
+<rfcol>7</rfcol>
+</rfrow>
+</BandPageFooter>
+		</LayoutResult>
+	</CommandResult>
+</RK7QueryResult>

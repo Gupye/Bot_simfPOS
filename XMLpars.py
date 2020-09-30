@@ -393,8 +393,8 @@ def delete_eat_fast(name, new_qnt, lock, table, oficc, bot, time):
                                        f'Стол {table}\n'
                                        f'Дата {time}\n'
                                        f'Удалено {name}\n'
-                                       f'Было {old_qnt}'
-                                       f'Cтало {new_qnt}')
+                                       f'Было {old_qnt}\n'
+                                       f'Cтало {new_qnt}\n')
                         open('temp_reports/fast_sell.txt', 'a', encoding='UTF-8').write(message1)
 
                         addons.send_new_alarm(message, 'subscrubers/non_save_eat.txt', bot, lock)

@@ -11,7 +11,7 @@ config.read("settings.ini")  # читаем конфиг
 def check_rest_code():
     config = configparser.ConfigParser()  # создаём объекта парсера
     config.read("settings.ini")  # читаем конфиг
-    addr = config['settings']['ip_addres']
+    addr = config['settings']['ser_ip_addres']
     port_xml = config['settings']['port_xml']
     req = "rest_req.xml"
     resp = "rest.xml"
@@ -31,7 +31,7 @@ def check_rest_code():
 
 
 def parse_disc_report():
-    addr = config['settings']['ip_addres']
+    addr = config['settings']['ser_ip_addres']
     port_xml = config['settings']['port_xml']
     req = "disc_req.xml"
     resp = "disc_report.xml"
@@ -111,7 +111,7 @@ def centr2_disc(text, four=True):
 
 def parse_del_report():
     # head = str()
-    addr = config['settings']['ip_addres']
+    addr = config['settings']['ser_ip_addres']
     port_xml = config['settings']['port_xml']
     req = "del_req.xml"
     resp = "del_report.xml"
@@ -179,7 +179,7 @@ def centr2_del(text, four=True):
 
 
 def parse_eat_report():
-    addr = config['settings']['ip_addres']
+    addr = config['settings']['ser_ip_addres']
     port_xml = config['settings']['port_xml']
     req = "eat_req.xml"
     resp = "eat_report.xml"
@@ -282,7 +282,7 @@ def centr2_eat(text, four=True):
 
 
 def parse_balance_report():
-    addr = config['settings']['ip_addres']
+    addr = config['settings']['ser_ip_addres']
     port_xml = config['settings']['port_xml']
     req = "balance_req.xml"
     resp = "balance_report.xml"
@@ -480,7 +480,7 @@ def delete_space_eat(endmess):
     return message
 
 def parse_time_sell():
-    addr = config['settings']['ip_addres']
+    addr = config['settings']['ser_ip_addres']
     port_xml = config['settings']['port_xml']
     req = "time_sell_req.xml"
     resp = "time_sell_report.xml"
@@ -540,7 +540,7 @@ def parse_time_sell():
 
 
 def bounces_from_receipts():
-    addr = config['settings']['ip_addres']
+    addr = config['settings']['ser_ip_addres']
     port_xml = config['settings']['port_xml']
     req = "boun_req.xml"
     resp = "boun_report.xml"

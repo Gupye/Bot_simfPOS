@@ -1,4 +1,4 @@
-token = '1048945938:AAHX_0SBJJhwaXkzj-n7OxlFlsxaK6vvFHU'
+token = '996496110:AAHDMD8b8_MPtFDcrWMKRk1kwbTN-5Qoibk'
 
 log_rkeeper = 'Administrator'
 pass_rkeeper = '1'

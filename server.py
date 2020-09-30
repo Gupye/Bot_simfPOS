@@ -62,18 +62,16 @@ def server_pooling(bot, lock):
                 d.start()
                 clear = ['temp_reports/buffer.txt', 'temp_reports/current_money.txt', 'temp_reports/deleted_check.txt',
                          'temp_reports/deleted_prech.txt', 'temp_reports/eaten_eat.txt', 'temp_reports/deleted_disc.txt'
-                            , 'temp_reports/fast_sell.txt', 'temp_reports/boun_rec.txt', 'temp_reports/discount.txt', 'temp_reports/time_sell.txt']
+                    , 'temp_reports/fast_sell.txt', 'temp_reports/boun_rec.txt', 'temp_reports/discount.txt',
+                         'temp_reports/time_sell.txt']
                 print(e)
                 print("Windows 1251 Получено от %s:%s:" % addr)
-                if 'Общая выручка' in str(pal.decode(encoding="WINDOWS-1251")) or 'кассовый день' in str(
-                        pal.decode(encoding="WINDOWS-1251")):
-                    x = threading.Thread(target=addons.send_new_alarm, args=(
-                        pal.decode(encoding="WINDOWS-1251"), 'subscrubers/end_of_shift_subs.txt', bot, lock))
-                    x.start()
-                    for file in clear:
-                        with open(file, 'w', encoding='UTF-8') as e:
-                            print('очищено')
-                else:
-                    x = threading.Thread(target=addons.send_new_alarm, args=(
-                        pal.decode(encoding="WINDOWS-1251"), 'subscrubers/Alarm_subs.txt', bot, lock))
+                pal.decode(encoding="WINDOWS-1251")
+                x = threading.Thread(target=addons.send_new_alarm, args=(
+                    pal.decode(encoding="WINDOWS-1251"), 'subscrubers/end_of_shift_subs.txt', bot, lock))
+                x.start()
+                for file in clear:
+                    with open(file, 'w', encoding='UTF-8') as e:
+                        print('очищено')
+
                 print(pal.decode(encoding="WINDOWS-1251"))

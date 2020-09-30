@@ -12,7 +12,7 @@ def send_new_alarm(message, send_filename, bot, lock):
         manw = str(man).strip()
         if check_connection():
             with lock:
-
+                print(manw)
                 file = open('text.txt', 'w', encoding='UTF-8')
                 file.write(message)
                 file.close()
@@ -58,7 +58,8 @@ def image_send(bot, chat, filed='text.txt'):
         message.append(' ')
         for i in range(0, len(message)):
             mes += message[i]
-        bot.send_message(chat, f'<pre>{mes}</pre>', parse_mode='HTML')
+        if mes != '':
+            bot.send_message(chat, f'<pre>{mes}</pre>', parse_mode='HTML')
     file.close()
 
 

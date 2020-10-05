@@ -74,15 +74,27 @@ def clena(datas):
         my_date_time_1 = datas.split(' ')[0]
         my_date_time_2 = datas.split(' ')[1]
 
-        my_date_time_1 = datetime.strptime(my_date_time_1, '%Y-%d-%m')
-        my_date_time_2 = datetime.strptime(my_date_time_2, '%Y-%d-%m')
+        my_date_time_1 = datetime.strptime(my_date_time_1, '%Y-%m-%d')
+        my_date_time_2 = datetime.strptime(my_date_time_2, '%Y-%m-%d')
 
         if my_date_time_1 > my_date_time_2:
             return '404'
         print(my_date_time_1, my_date_time_2)
         return '200'
     except:
-        return '404'
+        try:
+            my_date_time_1 = datas.split(' ')[0]
+            my_date_time_2 = datas.split(' ')[1]
+
+            my_date_time_1 = datetime.strptime(my_date_time_1, '%Y-%d-%m')
+            my_date_time_2 = datetime.strptime(my_date_time_2, '%Y-%d-%m')
+
+            if my_date_time_1 > my_date_time_2:
+                return '404'
+            print(my_date_time_1, my_date_time_2)
+            return '200'
+        except:
+            return '404'
 
 
 @bot.message_handler(commands=['start'])  # Вывод первого меню по команде \start
@@ -107,7 +119,6 @@ def send_text(message):
         else:
             bot.send_message(message.chat.id, 'Ваша лицензия истекла, обратитесь к диллеру')
 
-
     n2 = dt.datetime.now()
 
     if fisterly or int((n2 - n1).total_seconds()) > 10800:
@@ -126,8 +137,6 @@ def send_text(message):
         if request_worker.chekc_lic() == "Лицензия кончилась":
             bot.send_message(message.chat.id, 'Ваша лицензия истекла, обратитесь к диллеру')
             lic_ex = True
-
-
 
     if not lic_ex:
         if server_addoned.check_in(rest_codeddd, message.from_user.username) == '200':
@@ -149,9 +158,10 @@ def send_text(message):
                     markup_sql1.add('SQL-> Балансовый отчет за вчера')
                     markup_sql1.add('->Назад')
                     dict_sql[message.chat.id] = '1'
-                    bot.send_message(message.chat.id, 'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт '
-                                                      'за '
-                                                      'вчерашний день (внимание, отчёт строится в пределах 1-2 минут)   ',
+                    bot.send_message(message.chat.id,
+                                     'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт '
+                                     'за '
+                                     'вчерашний день (внимание, отчёт строится в пределах 1-2 минут)   ',
                                      reply_markup=markup_sql1)
                     menu_markup = 'markup_sql'
 
@@ -160,9 +170,10 @@ def send_text(message):
                     markup_sql1.add('SQL-> Список отказов за вчера')
                     markup_sql1.add('->Назад')
                     dict_sql[message.chat.id] = '2'
-                    bot.send_message(message.chat.id, 'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт '
-                                                      'за '
-                                                      'вчерашний день', reply_markup=markup_sql1)
+                    bot.send_message(message.chat.id,
+                                     'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт '
+                                     'за '
+                                     'вчерашний день', reply_markup=markup_sql1)
                     menu_markup = 'markup_sql1'
 
                 elif message.text.lower() == 'sql-> расход блюд по категориям':
@@ -181,7 +192,7 @@ def send_text(message):
                     markup_sql1.add('->Назад')
                     dict_sql[message.chat.id] = '4'
                     bot.send_message(message.chat.id,
-                                     'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт за '
+                                     'Введите даты в формате "ГГГГ-ММ-ДД ГГГГ-ММ-ДД" или выберите отчёт за '
                                      'вчерашний день', reply_markup=markup_sql1)
                     menu_markup = 'markup_sql'
 
@@ -191,7 +202,7 @@ def send_text(message):
                     markup_sql1.add('->Назад')
                     dict_sql[message.chat.id] = '5'
                     bot.send_message(message.chat.id,
-                                     'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт за '
+                                     'Введите даты в формате "ГГГГ-ММ-ДД ГГГГ-ММ-ДД" или выберите отчёт за '
                                      'вчерашний день', reply_markup=markup_sql1)
                     menu_markup = 'markup_sql'
 
@@ -199,31 +210,32 @@ def send_text(message):
                     sql_works.make_bal(message.chat.id)
                     addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
                     menu_markup = 'markup_sql1'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
 
                 elif message.text.lower() == 'sql-> список отказов за вчера':
                     sql_works.list_den(message.chat.id)
                     addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
                     menu_markup = 'markup_sql1'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
 
                 elif message.text.lower() == 'sql-> расход блюд по категориям за вчера':
                     sql_works.eat_cat(message.chat.id)
                     addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
                     menu_markup = 'markup_sql1'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
 
                 elif message.text.lower() == 'sql-> карты скидок за вчера':
                     sql_works.card_dis(message.chat.id)
                     addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
                     menu_markup = 'markup_sql1'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
 
                 elif message.text.lower() == 'sql-> платежные карты за вчера':
                     sql_works.card_pay(message.chat.id)
                     addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
                     menu_markup = 'markup_sql1'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
+
 
                 elif message.text.lower() == 'отчёты sql в виде картинки':
                     bot.send_message(message.chat.id, 'Выберите отчёт', reply_markup=markup_sql_img)
@@ -234,9 +246,10 @@ def send_text(message):
                     markup_sql1.add('SQLm-> Балансовый отчет за вчера')
                     markup_sql1.add('->Назад')
                     dict_sql[message.chat.id] = '1m'
-                    bot.send_message(message.chat.id, 'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт '
-                                                      'за '
-                                                      'вчерашний день (внимание, отчёт строится в пределах 1-2 минут)   ',
+                    bot.send_message(message.chat.id,
+                                     'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт '
+                                     'за '
+                                     'вчерашний день (внимание, отчёт строится в пределах 1-2 минут)   ',
                                      reply_markup=markup_sql1)
                     menu_markup = 'markup_sql1m'
 
@@ -245,9 +258,10 @@ def send_text(message):
                     markup_sql1m.add('SQLm-> Список отказов за вчера')
                     markup_sql1m.add('->Назад')
                     dict_sql[message.chat.id] = '2m'
-                    bot.send_message(message.chat.id, 'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт '
-                                                      'за '
-                                                      'вчерашний день', reply_markup=markup_sql1m)
+                    bot.send_message(message.chat.id,
+                                     'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт '
+                                     'за '
+                                     'вчерашний день', reply_markup=markup_sql1m)
                     menu_markup = 'markup_sql1m'
 
                 elif message.text.lower() == 'sqlm-> расход блюд по категориям':
@@ -266,7 +280,7 @@ def send_text(message):
                     markup_sql1m.add('->Назад')
                     dict_sql[message.chat.id] = '4m'
                     bot.send_message(message.chat.id,
-                                     'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт за '
+                                     'Введите даты в формате "ГГГГ-ММ-ДД ГГГГ-ММ-ДД" или выберите отчёт за '
                                      'вчерашний день', reply_markup=markup_sql1m)
                     menu_markup = 'markup_sql1m'
 
@@ -276,7 +290,7 @@ def send_text(message):
                     markup_sql1m.add('->Назад')
                     dict_sql[message.chat.id] = '5m'
                     bot.send_message(message.chat.id,
-                                     'Введите даты в формате "ГГГГ-ДД-ММ ГГГГ-ДД-ММ" или выберите отчёт за '
+                                     'Введите даты в формате "ГГГГ-ММ-ДД ГГГГ-ММ-ДД" или выберите отчёт за '
                                      'вчерашний день', reply_markup=markup_sql1m)
                     menu_markup = 'markup_sql1m'
 
@@ -284,31 +298,36 @@ def send_text(message):
                     sql_works.make_bal(message.chat.id)
                     addons.send_picture(bot, message.chat.id)
                     menu_markup = 'markup_sql1m'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
+
 
                 elif message.text.lower() == 'sqlm-> список отказов за вчера':
                     sql_works.list_den(message.chat.id)
                     addons.send_picture(bot, message.chat.id)
                     menu_markup = 'markup_sql1m'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
+
 
                 elif message.text.lower() == 'sqlm-> расход блюд по категориям за вчера':
                     sql_works.eat_cat(message.chat.id)
                     addons.send_picture(bot, message.chat.id)
                     menu_markup = 'markup_sql1m'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
+
 
                 elif message.text.lower() == 'sqlm-> карты скидок за вчера':
                     sql_works.card_dis(message.chat.id)
                     addons.send_picture(bot, message.chat.id)
                     menu_markup = 'markup_sql1m'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
+
 
                 elif message.text.lower() == 'sqlm-> платежные карты за вчера':
                     sql_works.card_pay(message.chat.id)
                     addons.send_picture(bot, message.chat.id)
                     menu_markup = 'markup_sql1m'
-                    del dict_sql[message.chat.id]
+                    dict_sql[message.chat.id] = '0'
+
 
                 elif message.text.lower() == 'создатель':
                     bot.send_message(message.chat.id, 'Gupye, vk.com/gupye, +79788781055')
@@ -411,74 +430,114 @@ def send_text(message):
 
             else:
                 if dict_sql[message.chat.id] == '1':
-                    dates = str(message.text).split(' ')
-                    sql_works.make_bal(message.chat.id, dates[0], dates[1])
-                    addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
-                    menu_markup = 'markup_sql1'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.make_bal(message.chat.id, dates[0], dates[1])
+                        addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
+                        menu_markup = 'markup_sql1'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id, 'Не удалось выполнить запрос, проверьте правильность написания даты')
+
 
                 elif dict_sql[message.chat.id] == '2':
-                    dates = str(message.text).split(' ')
-                    sql_works.list_den(message.chat.id, dates[0], dates[1])
-                    addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
-                    menu_markup = 'markup_sql1'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.list_den(message.chat.id, dates[0], dates[1])
+                        addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
+                        menu_markup = 'markup_sql1'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                     'Не удалось выполнить запрос, проверьте правильность написания даты')
 
                 elif dict_sql[message.chat.id] == '3':
-                    dates = str(message.text).split(' ')
-                    sql_works.eat_cat(message.chat.id, dates[0], dates[1])
-                    addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
-                    menu_markup = 'markup_sql1'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.eat_cat(message.chat.id, dates[0], dates[1])
+                        addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
+                        menu_markup = 'markup_sql1'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                         'Не удалось выполнить запрос, проверьте правильность написания даты')
 
                 elif dict_sql[message.chat.id] == '4':
-                    dates = str(message.text).split(' ')
-                    sql_works.card_pay(message.chat.id, dates[0], dates[1])
-                    addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
-                    menu_markup = 'markup_sql1'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.card_dis(message.chat.id, dates[0], dates[1])
+                        addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
+                        menu_markup = 'markup_sql1'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                         'Не удалось выполнить запрос, проверьте правильность написания даты')
 
                 elif dict_sql[message.chat.id] == '5':
-                    dates = str(message.text).split(' ')
-                    sql_works.card_dis(message.chat.id, dates[0], dates[1])
-                    addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
-                    menu_markup = 'markup_sql1'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.card_pay(message.chat.id, dates[0], dates[1])
+                        addons.image_send(bot, message.chat.id, filed=f'{message.chat.id}.txt')
+                        menu_markup = 'markup_sql1'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                         'Не удалось выполнить запрос, проверьте правильность написания даты')
 
                 if dict_sql[message.chat.id] == '1m':
-                    dates = str(message.text).split(' ')
-                    sql_works.make_bal(message.chat.id, dates[0], dates[1])
-                    addons.send_picture(bot, message.chat.id)
-                    menu_markup = 'markup_sql1m'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.make_bal(message.chat.id, dates[0], dates[1])
+                        addons.send_picture(bot, message.chat.id)
+                        menu_markup = 'markup_sql1m'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                         'Не удалось выполнить запрос, проверьте правильность написания даты')
 
                 elif dict_sql[message.chat.id] == '2m':
-                    dates = str(message.text).split(' ')
-                    sql_works.list_den(message.chat.id, dates[0], dates[1])
-                    addons.send_picture(bot, message.chat.id)
-                    menu_markup = 'markup_sql1m'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.list_den(message.chat.id, dates[0], dates[1])
+                        addons.send_picture(bot, message.chat.id)
+                        menu_markup = 'markup_sql1m'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                         'Не удалось выполнить запрос, проверьте правильность написания даты')
 
                 elif dict_sql[message.chat.id] == '3m':
-                    dates = str(message.text).split(' ')
-                    sql_works.eat_cat(message.chat.id, dates[0], dates[1])
-                    addons.send_picture(bot, message.chat.id)
-                    menu_markup = 'markup_sql1m'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.eat_cat(message.chat.id, dates[0], dates[1])
+                        addons.send_picture(bot, message.chat.id)
+                        menu_markup = 'markup_sql1m'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                         'Не удалось выполнить запрос, проверьте правильность написания даты')
 
                 elif dict_sql[message.chat.id] == '4m':
-                    dates = str(message.text).split(' ')
-                    sql_works.card_pay(message.chat.id, dates[0], dates[1])
-                    addons.send_picture(bot, message.chat.id)
-                    menu_markup = 'markup_sql1m'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.card_dis(message.chat.id, dates[0], dates[1])
+                        addons.send_picture(bot, message.chat.id)
+                        menu_markup = 'markup_sql1m'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                         'Не удалось выполнить запрос, проверьте правильность написания даты')
 
                 elif dict_sql[message.chat.id] == '5m':
-                    dates = str(message.text).split(' ')
-                    sql_works.card_dis(message.chat.id, dates[0], dates[1])
-                    addons.send_picture(bot, message.chat.id)
-                    menu_markup = 'markup_sql1m'
-                    del dict_sql['message.chat.id']
+                    try:
+                        dates = str(message.text).split(' ')
+                        sql_works.card_pay(message.chat.id, dates[0], dates[1])
+                        addons.send_picture(bot, message.chat.id)
+                        menu_markup = 'markup_sql1m'
+                        dict_sql[message.chat.id] = '0'
+                    except:
+                        bot.send_message(message.chat.id,
+                                         'Не удалось выполнить запрос, проверьте правильность написания даты')
         else:
 
             asadf = server_addoned.add_list(rest_codeddd, message.from_user.username, message.text.lower())

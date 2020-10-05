@@ -56,31 +56,38 @@ def cards(first='2020-01-01', second='2020-10-03'):
   CurrLines."BINDEDSUM" AS "BINDEDSUM",
   PaymentsExtra00."OWNER" AS "OWNER",
   PaymentsExtra00."CARDNUM" AS "CARDNUM",
- 
-  1 AS "CHECKCOUNT"
-  
+  CASHGROUPS00."NETNAME" AS "NETNAME",
+  RESTAURANTS00."NAME" AS "RESTAURANTNAME",
+  PrintChecks00."CHECKNUM" AS "CHECKNUM",
+  1 AS "CHECKCOUNT",
+  trk7EnumsValues0B00.UserMName AS "CURRENCYFORMAT",
+  GLOBALSHIFTS00."SHIFTNUM" AS "SHIFTNUM",
+  GLOBALSHIFTS00."SHIFTDATE" AS "SHIFTDATE",
+  PDSCards00."FOLDER3" AS "FOLDER3",
+  CURRENCIES00."NAME" AS "NAME",
+  PDSCards00."FOLDER2" AS "FOLDER2",
+  PDSCards00."FOLDER1" AS "FOLDER1"
 FROM CURRLINES
-LEFT JOIN PaymentsExtra PaymentsExtra00
-  ON (PaymentsExtra00.Visit = CurrLines.Visit) AND (PaymentsExtra00.MidServer = CurrLines.MidServer) AND (PaymentsExtra00.PayUNI = CurrLines.PayUNIForOwnerInfo)
-LEFT JOIN CASHGROUPS CASHGROUPS00
-  ON (CASHGROUPS00.SIFR = CurrLines.Midserver)
-LEFT JOIN RESTAURANTS RESTAURANTS00
-  ON (RESTAURANTS00.SIFR = CASHGROUPS00.Restaurant)
-LEFT JOIN PrintChecks PrintChecks00
-  ON (PrintChecks00.Visit = CurrLines.Visit) AND (PrintChecks00.MidServer = CurrLines.MidServer) AND (PrintChecks00.UNI = CurrLines.CheckUNI)
-LEFT JOIN CURRENCYTYPES CURRENCYTYPES00
-  ON (CURRENCYTYPES00.SIFR = CurrLines.iHighLevelType)
+LEFT JOIN "PAYMENTSEXTRA" PaymentsExtra00
+  ON (PaymentsExtra00."VISIT" = CurrLines."VISIT") AND (PaymentsExtra00."MIDSERVER" = CurrLines."MIDSERVER") AND (PaymentsExtra00."PAYUNI" = CurrLines."PAYUNIFOROWNERINFO")
+LEFT JOIN "CASHGROUPS" CASHGROUPS00
+  ON (CASHGROUPS00."SIFR" = CurrLines."MIDSERVER")
+LEFT JOIN "RESTAURANTS" RESTAURANTS00
+  ON (RESTAURANTS00."SIFR" = CASHGROUPS00."RESTAURANT")
+LEFT JOIN "PRINTCHECKS" PrintChecks00
+  ON (PrintChecks00."VISIT" = CurrLines."VISIT") AND (PrintChecks00."MIDSERVER" = CurrLines."MIDSERVER") AND (PrintChecks00."UNI" = CurrLines."CHECKUNI")
+LEFT JOIN "CURRENCYTYPES" CURRENCYTYPES00
+  ON (CURRENCYTYPES00."SIFR" = CurrLines."IHIGHLEVELTYPE")
 LEFT JOIN trk7EnumsValues trk7EnumsValues0B00
-  ON (trk7EnumsValues0B00.EnumData = CURRENCYTYPES00.CURRENCYFORMAT) AND (trk7EnumsValues0B00.EnumName = 'TPayLineType')
-LEFT JOIN Orders Orders00
-  ON (Orders00.Visit = PrintChecks00.Visit) AND (Orders00.MidServer = PrintChecks00.MidServer) AND (Orders00.IdentInVisit = PrintChecks00.OrderIdent)
-LEFT JOIN GLOBALSHIFTS GLOBALSHIFTS00
-  ON (GLOBALSHIFTS00.MidServer = Orders00.MidServer) AND (GLOBALSHIFTS00.ShiftNum = Orders00.iCommonShift)
-LEFT JOIN PDSCards PDSCards00
-  ON (PDSCards00.AccountIdent = PaymentsExtra00.AccountIdent) AND (PDSCards00.MInterface = PaymentsExtra00.AddByInterface)
-LEFT JOIN CURRENCIES CURRENCIES00
-  ON (CURRENCIES00.SIFR = CurrLines.Sifr)
-AND "SHIFTDATE" >= '{first}' and "SHIFTDATE" <= '{second}'
+  ON (trk7EnumsValues0B00.EnumData = CURRENCYTYPES00."CURRENCYFORMAT") AND (trk7EnumsValues0B00.EnumName = 'TPayLineType')
+LEFT JOIN "ORDERS" Orders00
+  ON (Orders00."VISIT" = PrintChecks00."VISIT") AND (Orders00."MIDSERVER" = PrintChecks00."MIDSERVER") AND (Orders00."IDENTINVISIT" = PrintChecks00."ORDERIDENT")
+LEFT JOIN "GLOBALSHIFTS" GLOBALSHIFTS00
+  ON (GLOBALSHIFTS00."MIDSERVER" = Orders00."MIDSERVER") AND (GLOBALSHIFTS00."SHIFTNUM" = Orders00."ICOMMONSHIFT")
+LEFT JOIN "PDSCARDS" PDSCards00
+  ON (PDSCards00."ACCOUNTIDENT" = PaymentsExtra00."ACCOUNTIDENT") AND (PDSCards00."MINTERFACE" = PaymentsExtra00."ADDBYINTERFACE")
+LEFT JOIN "CURRENCIES" CURRENCIES00
+  ON (CURRENCIES00."SIFR" = CurrLines."SIFR")
 '''
     return a
 
@@ -481,24 +488,33 @@ WHERE
 
 
 def cards_dis(first='2020-01-01', second='2020-10-04'):
-    a = f'''/*
-define:
-RESTAURANTNAME = Restaurants:Name;
-*/
+    a = f'''
 
 SELECT  
-  
+  isnull(PDSCards00.FOLDER1,isnull(PDSCards01.FOLDER1,' '))+'-'+isnull(PDSCards00.FOLDER2,isnull(PDSCards01.FOLDER2,' '))+'-'+isnull(PDSCards00.FOLDER3,isnull(PDSCards01.FOLDER3,' ')) AS "DEP",
   sum(DiscParts."SUM") AS "DISCSUM",                                                                                                                   
   (CASE WHEN (ROW_NUMBER() OVER (PARTITION BY PrintChecks00."CHECKNUM",DishDiscounts00."HOLDER",CURRENCIES00.NAME ORDER BY PrintChecks00."CHECKNUM")=1) THEN 1 
- ELSE 0
- END)  AS "CHECKCOUNT",                                                                                                  
+	ELSE 0
+	END)  AS "CHECKCOUNT", 
+  Discounts00."NAME" AS "DISCOUNT",                                                                                                  
   DishDiscounts00."HOLDER" AS "HOLDER",                                                                                                                
-                                                                                                                
+  PrintChecks00."CHECKNUM" AS "CHECKNUM",                                                                                                              
   DishDiscounts00."CARDCODE" AS "CARDCODE",                                                                                                            
-  sum(PayBindings00.PAYSUM) AS "BINDEDSUM"                                                                                                         
-                                                                                                              
-  
-  
+  sum(PayBindings00.PAYSUM) AS "BINDEDSUM",                                                                                                           
+  GlobalShifts00."SHIFTNUM" AS "SHIFTNUM",                                                                                                             
+  GlobalShifts00."SHIFTDATE" AS "SHIFTDATE",                                                                                                           
+  CashGroups00."NETNAME" AS "NETNAME",
+  CURRENCIES00."NAME" AS "CURRENCY",
+  ORIGCURRENCIES."NAME" AS "ORIGCURRENCY",
+  Restaurants00."NAME" AS "RESTAURANTNAME",
+  (CASE WHEN (ROW_NUMBER() OVER (PARTITION BY Discounts00."NAME",                                   
+								 DishDiscounts00."CARDCODE",                                                                              
+								 GlobalShifts00."SHIFTNUM",                                                                                                             
+								 GlobalShifts00."SHIFTDATE",                                                                                                           
+								 CashGroups00."NETNAME",
+								 Restaurants00."NAME" ORDER BY DishDiscounts00."CARDCODE")=1) THEN 1 
+	ELSE 0
+	END) AS "DISCOUNTVISIT"
 FROM DISCPARTS                                                                                                                                         
 LEFT JOIN PayBindings PayBindings00                                                                                                                    
   ON (PayBindings00.Visit = DiscParts.Visit) AND (PayBindings00.MidServer = DiscParts.MidServer) AND (PayBindings00.UNI = DiscParts.BindingUNI)     
@@ -535,7 +551,7 @@ LEFT JOIN CURRENCIES ORIGCURRENCIES
   ON  ORIGCURRENCIES.SIFR=PAYMENTS01.SIFR 
 WHERE                                                                                                                                                  
   ((PrintChecks00.State = 6) OR (PrintChecks00.State = 7))                                                                                             
-  and (DishDiscounts00."CARDCODE" <> '')      AND "SHIFTDATE" >= '{first}' and "SHIFTDATE" <= '{second}'                                                                                           
+  and (DishDiscounts00."CARDCODE" <> '')                                                                              
 group by
   isnull(PDSCards00.FOLDER1,isnull(PDSCards01.FOLDER1,' '))+'-'+isnull(PDSCards00.FOLDER2,isnull(PDSCards01.FOLDER2,' '))+'-'+isnull(PDSCards00.FOLDER3,isnull(PDSCards01.FOLDER3,' ')),
   DishDiscounts00."HOLDER", 

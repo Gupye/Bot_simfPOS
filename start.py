@@ -4,6 +4,6 @@ while True:
   try:
 
 
-      os.system('programm2.py')
+      os.system('py main.py')
   except Exception:
     pass

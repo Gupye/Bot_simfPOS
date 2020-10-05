@@ -75,7 +75,7 @@ def send_picture(bot, chat):
         for z in range(i * 30, (i + 1) * 30):
             tempo += stret[z]
         message_clast = file.read(len(tempo))
-        sizes = (30 * 22) + 15
+        sizes = (30 * 20)
         img = Image.new('RGB', (350, sizes), (230, 230, 230))
         draw = ImageDraw.Draw(img)
         draw.text((10, 10), message_clast, fill='rgb(0, 0, 0)', font=font)
@@ -91,7 +91,7 @@ def send_picture(bot, chat):
 
     print(tempo, len(tempo))
     print(message_clast)
-    sizes = (30 * 22) + 30
+    sizes = (30 * 20)
     img = Image.new('RGB', (350, sizes), (230, 230, 230))
     draw = ImageDraw.Draw(img)
     draw.text((10, 10), message_clast, fill='rgb(0, 0, 0)', font=font)

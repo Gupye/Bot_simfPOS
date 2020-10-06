@@ -1,5 +1,7 @@
 import datetime
 import configparser
+import os
+
 import request_worker
 
 
@@ -31,13 +33,17 @@ def check_lic_day(rest_code):
 
 
 def check_in(rest_code, nickname):
-    lines = open(f'a/secureet/{rest_code}.txt', 'r', encoding='UTF-8').readlines()
-    for line in lines:
+    if not os.path.exists(f'a/secureet/{rest_code}.txt'):
+        open(f'a/secureet/{rest_code}.txt', 'w', encoding='UTF-8')
 
-        if nickname in line:
+    lines = open(f'a/secureet/{rest_code}.txt', 'r', encoding='UTF-8').readlines()
+
+    for line in lines:
+        if nickname == str(line).strip('\n'):
+            print(nickname, '==', str(line).strip('\n'))
             return '200'
-        else:
-            return 'Ivan Govnov'
+
+    return 'Ivan Govnov'
 
 
 def add_list(rest_code, nickname, passw):
@@ -49,8 +55,6 @@ def add_list(rest_code, nickname, passw):
             return "200"
         else:
             return 'sdfsdfsdf'
-
-
     except:
         if passw == config[rest_code]['pass_code']:
             open(f'a/secureet/{rest_code}.txt', 'a', encoding='UTF-8').write(nickname + '\n')

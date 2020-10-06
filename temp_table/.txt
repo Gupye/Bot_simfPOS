@@ -1,23 +1,11 @@
           Стол№ 
-Печать 19.09.2020 20:58:31
+Печать 02.10.2020 19:45:31
 Официант: Администратор
 
 Блюдо                   Кол-во     Сумма
 ----------------------------------------
-Amarone Classico          2.0     28200.0
-Costasera
-Blauer Spatburgunder     2.00     12800.0
-Campofiorin Rosso         2.0      9000.0
-del Veronese
-Chateau Lalande-Borie    1.00      7900.0
-Coteaux-Bourguignons      0.0         0.0
-Costasera Amarone        1.00      7900.0
-Classico 0.375
-Cabernet Sauvignon       0.00         0.0
-Decoy
-Brunello di              0.00         0.0
-Montalcino
-50:50                    1.00      3500.0
+Тест 1                    6.0         6.0
+Тест 2                   0.00         0.0
 ----------------------------------------
-Итого к оплате                   94700.00
+Итого к оплате                       6.00
 ----------------------------------------

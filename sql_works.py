@@ -20,8 +20,8 @@ def centr(text):
 
 
 def centr2(text):
-    fir = ((71 - len(text)) // 2) * " "
-    sec = (71 - (len(fir) + len(text))) * " "
+    fir = ((48 - len(text)) // 2) * " "
+    sec = (48 - (len(fir) + len(text))) * " "
     a = fir + text + sec
     return a
 
@@ -42,6 +42,13 @@ def centr4(text):
 
 def get_dates():
     date_format = '%Y-%d-%m'
+    today = datetime.now()
+    yestarday = today - timedelta(days=1)
+
+    return yestarday.strftime(date_format)
+
+def get_dates2():
+    date_format = '%Y-%m-%d'
     today = datetime.now()
     yestarday = today - timedelta(days=1)
 
@@ -120,11 +127,10 @@ def make_bal(ds, d1=get_dates(), d2=get_dates(),pdf=False):
     return messsagek
 
 
-def eat_cat(ds, d1=get_dates(), d2=get_dates(),pdf=False):
+def eat_cat(ds, d1=get_dates(), d2=get_dates()):
     cnxn = connecting_ds(make_config())
 
     df = pd.read_sql_query(cat_eatter(d1, d2), cnxn)
-
     df.rename(columns={'DISH': 'Блюдо', 'CATEGORY': 'Категория', 'QUANTITY': 'Кол-во', 'PAYSUM': 'Сумма(по оплате)'},
               inplace=True)
     df2 = df[['Категория', 'Блюдо', 'Кол-во', 'Сумма(по оплате)']].groupby(['Категория', 'Блюдо']).sum()
@@ -162,18 +168,20 @@ def list_den(ds, d1=get_dates(), d2=get_dates(),pdf=False):
     return messages
 
 
-def card_pay(ds, d1=get_dates(), d2=get_dates(),pdf=False):
+def card_pay(ds, d1='0', d2='0',pdf=False):
     cnxn = connecting_ds(make_config())
 
     df = pd.read_sql_query(cards(d1, d2), cnxn)
-
-    df2 = df.groupby(['OWNER', 'CARDNUM'], as_index=False).sum()
-
+    df.to_csv('test.csv')
+    if d1 == '0':
+        d1 = get_dates2()
+        d2 = get_dates2()
+    df2 = df[(df['SHIFTDATE'] >= d1) & (df['SHIFTDATE'] <= d2) & (df['CURRENCYFORMAT'] == 'Платежная карта')].groupby(['OWNER', 'CARDNUM'], as_index=False).sum()
     messages = f'{centr3("Карты оплаты")}\n' \
                f'{centr3(f"Ресторан:{setings.rest_name}")}\n\n'
 
     first = True
-    for i in range(2, len(df2.index)):
+    for i in range(0, len(df2.index)):
         if first:
             first = False
         else:
@@ -187,19 +195,24 @@ def card_pay(ds, d1=get_dates(), d2=get_dates(),pdf=False):
     return messages
 
 
-def card_dis(ds, d1=get_dates(), d2=get_dates(), pdf=False):
+def card_dis(ds, d1='0', d2='0'):
     cnxn = connecting_ds(make_config())
     pd.options.display.float_format = '{:,.2f}'.format
     df = pd.read_sql_query(cards_dis(), cnxn)
 
-    df2 = df.groupby(['HOLDER', 'CARDCODE'], as_index=False).sum()
+    if d1 == '0':
+        d1 = get_dates2()
+        d2 = get_dates2()
+
+
+    df2 = df[(df['SHIFTDATE'] >= d1) & (df['SHIFTDATE'] <= d2)].groupby(['HOLDER', 'CARDCODE'], as_index=False).sum()
 
     messages = f'{centr4("Карты скидок")}\n' \
                f'{centr4(f"Дата: {d1} - {d2}")}\n' \
                f'{centr4(f"Ресторан:{setings.rest_name}")}\n\n'
 
     first = True
-    for i in range(2, len(df2.index)):
+    for i in range(0, len(df2.index)):
         if first:
             first = False
         else:
@@ -207,7 +220,7 @@ def card_dis(ds, d1=get_dates(), d2=get_dates(), pdf=False):
         messages += f'Номер карты         Владелец\n' \
                     f'{df2.loc[i]["CARDCODE"]}          {df2.loc[i]["HOLDER"]}\n' \
                     f'Скидка       Сумма     Чеков\n' \
-                    f'{df2.loc[i]["DISCSUM"]}      {df2.loc[i]["BINDEDSUM"]}      {df2.loc[i]["CHECKCOUNT"]}\n'
+                    f'{df2.loc[i]["DISCSUM"]}          {df2.loc[i]["BINDEDSUM"]}        {df2.loc[i]["CHECKCOUNT"]}\n'
     with lock:
         open(f'{ds}.txt', 'w', encoding='UTF-8').write(messages)
 

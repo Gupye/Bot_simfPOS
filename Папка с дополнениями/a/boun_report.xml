@@ -1,69 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RK7QueryResult ServerVersion="7.6.2.205" XmlVersion="244" NetName="MIDSERV" Status="Ok" Processed="1">
-	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-09-19T19:53:09" WorkTime="0">
+<RK7QueryResult ServerVersion="7.6.4.412" XmlVersion="247" NetName="FORTEST" Status="Ok" Processed="1">
+	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-09-30T10:58:34" WorkTime="31">
 		<LayoutResult LayoutCode="11963" LayoutFilters="" DataSourceParams=""><BandRepTitle>
 <rhrow>
 <rhcol>Отказы из чеков</rhcol>
-<rhcol>кассовый день 16.09.2020</rhcol>
-<rhcol>Смена 206</rhcol>
-<rhcol>19.09.2020 19:53:09</rhcol>
+<rhcol>кассовый день</rhcol>
+<rhcol>Смена 4</rhcol>
+<rhcol>30.09.2020 10:58:34</rhcol>
 </rhrow>
 </BandRepTitle>
-<Voids count = "4">
-<rhrow>
-<rhcol>----------------------------------------</rhcol>
-<rhcol>Блюдо</rhcol>
-<rhcol>Кол-во</rhcol>
-<rhcol>Сумма</rhcol>
-<rhcol>----------------------------------------</rhcol>
-</rhrow>
-<rbrow>
-<rbcol>Грибной соус 100гр</rbcol>
-<rbcol>3.00</rbcol>
-<rbcol>1050.00</rbcol>
-<rbcol>Официант :</rbcol>
-<rbcol>Администратор</rbcol>
-<rbcol>Удалил   :</rbcol>
-<rbcol>Администратор</rbcol>
-<rbcol></rbcol>
-</rbrow>
-<rbrow>
-<rbcol>Белуга Голд Лайн</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>730.00</rbcol>
-<rbcol>Официант :</rbcol>
-<rbcol>Администратор</rbcol>
-<rbcol>Удалил   :</rbcol>
-<rbcol>Администратор</rbcol>
-<rbcol></rbcol>
-</rbrow>
-<rbrow>
-<rbcol>Картофель Черри</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>400.00</rbcol>
-<rbcol>Официант :</rbcol>
-<rbcol>Администратор</rbcol>
-<rbcol>Удалил   :</rbcol>
-<rbcol>Администратор</rbcol>
-<rbcol></rbcol>
-</rbrow>
-<rbrow>
-<rbcol>Булгур 100гр</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>180.00</rbcol>
-<rbcol>Официант :</rbcol>
-<rbcol>Администратор</rbcol>
-<rbcol>Удалил   :</rbcol>
-<rbcol>Администратор</rbcol>
-<rbcol></rbcol>
-</rbrow>
-<rfrow>
-<rfcol>----------------------------------------</rfcol>
-<rfcol>Всего</rfcol>
-<rfcol>6.00</rfcol>
-<rfcol>2360.00</rfcol>
-</rfrow>
-</Voids>
 <BandPageFooter>
 <rfrow>
 <rfcol>7</rfcol>

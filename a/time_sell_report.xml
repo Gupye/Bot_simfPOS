@@ -1,83 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RK7QueryResult ServerVersion="7.6.2.205" XmlVersion="244" NetName="MIDSERV" Status="Ok" Processed="1">
-	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-09-19T19:58:36" WorkTime="47">
+<RK7QueryResult ServerVersion="7.6.4.412" XmlVersion="247" NetName="FORTEST" Status="Ok" Processed="1">
+	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-10-02T19:35:09" WorkTime="47">
 		<LayoutResult LayoutCode="51" LayoutFilters="" DataSourceParams=""><BandRepTitle>
 <rhrow>
 <rhcol>Почасовой расход</rhcol>
-<rhcol>кассовый день 16.09.2020</rhcol>
-<rhcol>Смена 206</rhcol>
-<rhcol>19.09.2020 19:58:36</rhcol>
+<rhcol>кассовый день 01.10.2020</rhcol>
+<rhcol>Смена 5</rhcol>
+<rhcol>02.10.2020 19:35:09</rhcol>
 </rhrow>
 </BandRepTitle>
-<DishDebit count = "17">
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
+<DishDebit count = "1">
 <rbrow>
 </rbrow>
 </DishDebit>
-<DishDebit count = "41">
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
-<rbrow>
-</rbrow>
+<DishDebit count = "25">
 <rbrow>
 </rbrow>
 <rbrow>
@@ -218,9 +154,9 @@
 </rbrow>
 <rbrow>
 <rbcol>13:00 - 13:59</rbcol>
-<rbcol>2</rbcol>
-<rbcol>2</rbcol>
-<rbcol>4360.00</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
 </rbrow>
 <rbrow>
 <rbcol>14:00 - 14:59</rbcol>
@@ -236,9 +172,9 @@
 </rbrow>
 <rbrow>
 <rbcol>16:00 - 16:59</rbcol>
-<rbcol>3</rbcol>
-<rbcol>9</rbcol>
-<rbcol>22750.00</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0</rbcol>
+<rbcol>0.00</rbcol>
 </rbrow>
 <rbrow>
 <rbcol>17:00 - 17:59</rbcol>
@@ -254,9 +190,9 @@
 </rbrow>
 <rbrow>
 <rbcol>19:00 - 19:59</rbcol>
-<rbcol>0</rbcol>
-<rbcol>0</rbcol>
-<rbcol>0.00</rbcol>
+<rbcol>1</rbcol>
+<rbcol>7</rbcol>
+<rbcol>7.00</rbcol>
 </rbrow>
 <rbrow>
 <rbcol>20:00 - 20:59</rbcol>
@@ -285,9 +221,9 @@
 <rfrow>
 <rfcol>----------------------------------------</rfcol>
 <rfcol>Всего</rfcol>
-<rfcol>5</rfcol>
-<rfcol>11</rfcol>
-<rfcol>27110.00</rfcol>
+<rfcol>1</rfcol>
+<rfcol>7</rfcol>
+<rfcol>7.00</rfcol>
 <rfcol>----------------------------------------</rfcol>
 </rfrow>
 </DishDebit>

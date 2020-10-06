@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RK7QueryResult ServerVersion="7.6.2.205" XmlVersion="244" NetName="MIDSERV" Status="Ok" Processed="1">
-	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-09-19T01:56:42" WorkTime="63">
+<RK7QueryResult ServerVersion="7.6.4.412" XmlVersion="247" NetName="FORTEST" Status="Ok" Processed="1">
+	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-10-02T19:35:14" WorkTime="31">
 		<LayoutResult LayoutCode="50" LayoutFilters="" DataSourceParams=""><BandRepTitle>
 <rhrow>
 <rhcol>Удаленные чеки</rhcol>
-<rhcol>кассовый день 16.09.2020</rhcol>
-<rhcol>Смена 206</rhcol>
-<rhcol>19.09.2020 1:56:42</rhcol>
+<rhcol>кассовый день 01.10.2020</rhcol>
+<rhcol>Смена 5</rhcol>
+<rhcol>02.10.2020 19:35:14</rhcol>
 </rhrow>
 </BandRepTitle>
+<DeletedReceipts count = "1">
+<rhrow>
+<rhcol>----------------------------------------</rhcol>
+</rhrow>
+<rbrow>
+<rbcol>Чек #100019</rbcol>
+<rbcol>На сумму:</rbcol>
+<rbcol>3.00</rbcol>
+<rbcol>причина:</rbcol>
+<rbcol>удалил:</rbcol>
+<rbcol>Отказ со сп.</rbcol>
+<rbcol>Администратор</rbcol>
+<rbcol></rbcol>
+</rbrow>
+</DeletedReceipts>
 <BandPageFooter>
 <rbrow>
 <rbcol>----------------------------------------</rbcol>

@@ -13,13 +13,13 @@ def detect_situation(message, bot, lock):
     sitaution = message[a + 10:a + 14].strip(' ').strip('"')
     if sitaution == '16':
         delprech(message, bot, lock)
-    if sitaution == '5':
+    elif sitaution == '5':
         close_check(message, lock)
-    if sitaution == '13':
+    elif sitaution == '13':
         temp_check(message, bot, lock)
-    if sitaution == '14':
+    elif sitaution == '14':
         delcheck(message, bot, lock)
-    if sitaution == '3':
+    elif sitaution == '3':
         temp_check_screen(message, bot, lock)
 
 
@@ -139,6 +139,7 @@ def temp_check(text, bot, lock):
 
         time = soup.find('sysparams').get('time')
         offic = soup.find('loginperson').get('name')
+        offic_del = soup.find('waiter').get('name')
         datases = soup.find_all('checkline')
         datas = list()
         first = True
@@ -166,7 +167,7 @@ def temp_check(text, bot, lock):
         for data in datas:
             name = data.split('%%')[0]
             qnt = data.split('%%')[1]
-            delete_eat(name, qnt, lock, table, offic, bot, time)
+            delete_eat(name, qnt, lock, table, offic, bot, time, offic_del)
             a += format_prech(name, qnt, datases[coutn].get("price"))
             coutn += 1
         try:
@@ -208,6 +209,7 @@ def temp_check_screen(text, bot, lock):
         summary = soup.find('screencheck').get('sum')
         time = soup.find('sysparams').get('time')
         offic = soup.find('loginperson').get('name')
+
         datases = soup.find_all('checkline')
         datas = list()
         first = True
@@ -235,7 +237,8 @@ def temp_check_screen(text, bot, lock):
         for data in datas:
             name = data.split('%%')[0]
             qnt = data.split('%%')[1]
-            delete_eat_fast(name, qnt, lock, table, offic, bot, time)
+            if table == '':
+                delete_eat_fast(name, qnt, lock, table, offic, bot, time)
             a += format_prech(name, qnt, datases[coutn].get("price"))
             coutn += 1
         try:
@@ -325,7 +328,7 @@ def format_prech(name, num, price):
     return (text)
 
 
-def delete_eat(name, new_qnt, lock, table, oficc, bot, time):
+def delete_eat(name, new_qnt, lock, table, oficc, bot, time, offic_del):
     with lock:
         if os.path.exists(f'temp_eat/{table}.txt'):
             file = open(f'temp_eat/{table}.txt', 'r', encoding='UTF-8')
@@ -342,6 +345,7 @@ def delete_eat(name, new_qnt, lock, table, oficc, bot, time):
                         message = str(f'        ВНИМАНИЕ УДАЛЕНИЕ БЛЮДА\n'
                                       f'-----------------------------------\n'
                                       f'Официант {oficc}\n'
+                                      f'Удалил {offic_del}\n'
                                       f'Стол {table}\n'
                                       f'Дата {time}\n'
                                       f'Удалено {name}\n'
@@ -380,7 +384,7 @@ def delete_eat_fast(name, new_qnt, lock, table, oficc, bot, time):
                 old_qnt = data.split('%%')[1]
                 if want_name == name:
                     if float(old_qnt) > float(new_qnt):
-                        message = str(f'        ВНИМАНИЕ УДАЛЕНИЕ БЛЮДА\n'
+                        message = str(f'  ВНИМАНИЕ УДАЛЕНИЕ НЕСОХРАНЁННОГО БЛЮДА\n'
                                       f'-----------------------------------\n'
                                       f'Официант {oficc}\n'
                                       f'Стол {table}\n'
@@ -394,7 +398,7 @@ def delete_eat_fast(name, new_qnt, lock, table, oficc, bot, time):
                                        f'Дата {time}\n'
                                        f'Удалено {name}\n'
                                        f'Было {old_qnt}'
-                                       f'Cтало {new_qnt}')
+                                       f'Cтало {new_qnt}\n\n\n')
                         open('temp_reports/fast_sell.txt', 'a', encoding='UTF-8').write(message1)
 
                         addons.send_new_alarm(message, 'subscrubers/non_save_eat.txt', bot, lock)

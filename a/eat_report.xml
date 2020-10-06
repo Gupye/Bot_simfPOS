@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RK7QueryResult ServerVersion="7.6.2.205" XmlVersion="244" NetName="MIDSERV" Status="Ok" Processed="1">
-	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-09-19T19:40:20" WorkTime="31">
+<RK7QueryResult ServerVersion="7.6.4.412" XmlVersion="247" NetName="FORTEST" Status="Ok" Processed="1">
+	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-10-02T19:35:06" WorkTime="16">
 		<LayoutResult LayoutCode="10940" LayoutFilters="" DataSourceParams=""><BandRepTitle>
 <rhrow>
 <rhcol>Расход блюд по категориям</rhcol>
-<rhcol>кассовый день 16.09.2020</rhcol>
-<rhcol>Смена 206</rhcol>
-<rhcol>19.09.2020 19:40:20</rhcol>
+<rhcol>кассовый день 01.10.2020</rhcol>
+<rhcol>Смена 5</rhcol>
+<rhcol>02.10.2020 19:35:06</rhcol>
 </rhrow>
 </BandRepTitle>
-<DishCategory count = "17">
+<DishCategory count = "1">
 </DishCategory>
-<DishCategory count = "2">
+<DishCategory count = "1">
 <rhrow>
 <rhcol>---------------------------------------------</rhcol>
 <rhcol>код</rhcol>
@@ -21,109 +21,19 @@
 <rhcol>------------------------------------------------</rhcol>
 </rhrow>
 <rbrow>
-<DishCategory count = "3">
+<DishCategory count = "1">
 <rhrow>
-<rhcol>Категория: Алкоголь</rhcol>
+<rhcol>Категория: Еда</rhcol>
 </rhrow>
 <rbrow>
-<rbcol>159</rbcol>
-<rbcol>Амаро Монтенегро</rbcol>
-<rbcol>2.00</rbcol>
-<rbcol>760.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>228</rbcol>
-<rbcol>Торрес 20</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>750.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>236</rbcol>
-<rbcol>Фернет Бранка</rbcol>
-<rbcol>2.00</rbcol>
-<rbcol>1120.00</rbcol>
+<rbcol>3</rbcol>
+<rbcol>Тест 1</rbcol>
+<rbcol>7.00</rbcol>
+<rbcol>7.00</rbcol>
 </rbrow>
 <rfrow>
 <rfcol>Всего по категории:</rfcol>
-<rfcol>2630.00</rfcol>
-<rfcol></rfcol>
-</rfrow>
-</DishCategory>
-</rbrow>
-<rbrow>
-<DishCategory count = "11">
-<rhrow>
-<rhcol>Категория: Блюдо</rhcol>
-</rhrow>
-<rbrow>
-<rbcol>594</rbcol>
-<rbcol>Бабагануш</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>490.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>889</rbcol>
-<rbcol>Бургер с тунцом</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>980.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>50</rbcol>
-<rbcol>Говяжьи щёчки,овощное соте</rbcol>
-<rbcol>5.00</rbcol>
-<rbcol>4950.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>701</rbcol>
-<rbcol>Голубика 100гр</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>450.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>763</rbcol>
-<rbcol>Горчица 40 гр</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>130.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>707</rbcol>
-<rbcol>Гратен картофельный</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>280.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>55</rbcol>
-<rbcol>Жареные креветки,дзадзики,зелень</rbcol>
-<rbcol>2.00</rbcol>
-<rbcol>1780.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>890</rbcol>
-<rbcol>Осьминог на гриле</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>1690.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>863</rbcol>
-<rbcol>Поке тунец</rbcol>
-<rbcol>13.00</rbcol>
-<rbcol>12740.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>888</rbcol>
-<rbcol>Фишбургер</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>990.00</rbcol>
-</rbrow>
-<rbrow>
-<rbcol>855</rbcol>
-<rbcol>Фокачча с оливковым маслом</rbcol>
-<rbcol>1.00</rbcol>
-<rbcol>0.00</rbcol>
-</rbrow>
-<rfrow>
-<rfcol>Всего по категории:</rfcol>
-<rfcol>24480.00</rfcol>
+<rfcol>7.00</rfcol>
 <rfcol></rfcol>
 </rfrow>
 </DishCategory>
@@ -131,7 +41,7 @@
 <rfrow>
 <rfcol>----------------------------------------</rfcol>
 <rfcol>Всего:</rfcol>
-<rfcol>27110.00</rfcol>
+<rfcol>7.00</rfcol>
 </rfrow>
 </DishCategory>
 <BandPageFooter>

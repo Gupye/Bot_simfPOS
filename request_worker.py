@@ -10,7 +10,7 @@ def chekc_lic():
         r = requests.get(f'{setings.serv_addr}/check_lic?rest_code={rest_code}')
         return r.json()
     except:
-        r = server_addoned.check_lic()
+        r = server_addoned.check_lic(report_works.check_rest_code())
         return r
 
 

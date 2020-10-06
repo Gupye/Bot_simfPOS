@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RK7QueryResult ServerVersion="7.6.2.205" XmlVersion="244" NetName="MIDSERV" Status="Ok" Processed="1">
-	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-09-19T01:56:44" WorkTime="32">
+<RK7QueryResult ServerVersion="7.6.4.412" XmlVersion="247" NetName="FORTEST" Status="Ok" Processed="1">
+	<CommandResult CMD="GetDocByLayout" Status="Ok" ErrorText="" DateTime="2020-10-02T19:47:08" WorkTime="31">
 		<LayoutResult LayoutCode="53" LayoutFilters="" DataSourceParams=""><BandRepTitle>
 <rhrow>
 <rhcol>Персональные скидки / наценки</rhcol>
-<rhcol>кассовый день 16.09.2020</rhcol>
-<rhcol>Смена 206</rhcol>
-<rhcol>19.09.2020 1:56:44</rhcol>
+<rhcol>кассовый день 02.10.2020</rhcol>
+<rhcol>Смена 6</rhcol>
+<rhcol>02.10.2020 19:47:08</rhcol>
 </rhrow>
 </BandRepTitle>
 <Discounts count = "1">
@@ -25,16 +25,16 @@
 <rbrow>
 <Discounts count = "1">
 <rbrow>
-<rbcol>Скидка 15% (Duklalis)</rbcol>
+<rbcol>Скидка 5%</rbcol>
 <rbcol>1</rbcol>
-<rbcol>-1129.50</rbcol>
+<rbcol>-0.50</rbcol>
 </rbrow>
 </Discounts>
 </rbrow>
 <rfrow>
 <rfcol>----------------------------------------</rfcol>
 <rfcol>Итого:</rfcol>
-<rfcol>-1129.50</rfcol>
+<rfcol>-0.50</rfcol>
 <rfcol></rfcol>
 </rfrow>
 </Discounts>
@@ -42,7 +42,7 @@
 <rfrow>
 <rfcol>----------------------------------------</rfcol>
 <rfcol>Итого:</rfcol>
-<rfcol>-1129.50</rfcol>
+<rfcol>-0.50</rfcol>
 <rfcol>----------------------------------------</rfcol>
 </rfrow>
 </Discounts>

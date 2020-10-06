@@ -1,8 +1,8 @@
 @if /%1 == / Goto Simplest
-XMLTest 127.0.0.1:1995 %1
+XMLTest 192.168.23.163:1995 %1
 @goto end
 :Simplest
-XMLTest 127.0.0.1:1995 test.xml
-XMLTest 127.0.0.1:1995 .LastResult
+XMLTest 192.168.23.163:1995 test.xml
+XMLTest 192.168.23.163:1995 .LastResult
 :end
 @pause

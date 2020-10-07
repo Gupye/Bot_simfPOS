@@ -1,5 +1,7 @@
 import configparser
 import os
+from time import sleep
+
 from bs4 import BeautifulSoup
 import addons
 
@@ -10,17 +12,66 @@ import addons
 
 def detect_situation(message, bot, lock):
     a = message.find('Situation=')
-    sitaution = message[a + 10:a + 14].strip(' ').strip('"')
+    sitaution = message[a + 10:a + 14].strip('>').strip(' ').strip('"')
+    print('Ситуация', sitaution)
     if sitaution == '16':
         delprech(message, bot, lock)
-    elif sitaution == '5':
+    if sitaution == '5':
         close_check(message, lock)
-    elif sitaution == '13':
+    if sitaution == '13':
         temp_check(message, bot, lock)
-    elif sitaution == '14':
+    if sitaution == '14':
         delcheck(message, bot, lock)
-    elif sitaution == '3':
+    if sitaution == '12':
+        temp_rep(message, lock)
+    if sitaution == '3':
         temp_check_screen(message, bot, lock)
+    if sitaution == '9':
+        print('закрыли окно редактирования')
+        check_hitruga(message, bot, lock)
+
+
+def check_hitruga(text, bot, lock):
+    sleep(3)
+    soup = BeautifulSoup(text, 'lxml')
+    table = soup.find('quitorder').get('table')
+    open(f'temp_reports/12{table}', 'w')
+    if os.path.exists(f'temp_reports/12{table}') and not os.path.exists(
+            f'temp_reports/13{table}') and not os.path.exists(f'temp_reports/5{table}'):
+        file = open(f'temp_reports/3{table}.txt', 'r', encoding='UTF-8').readlines()
+        message = str()
+        for fil in file:
+
+                message += fil
+        addons.send_new_alarm(message, 'subscrubers/Alarm_subs.txt', bot, lock)
+        if os.path.exists(f'temp_table/{table}.txt'):
+            os.remove(f'temp_table/{table}.txt')
+        if os.path.exists(f'temp_eat/{table}.txt'):
+            os.remove(f'temp_eat/{table}.txt')
+        if os.path.exists(f'temp_discount/{table}.txt'):
+            os.remove(f'temp_discount/{table}.txt')
+        if os.path.exists(f'temp_reports/3{table}.txt'):
+            os.remove(f'temp_reports/3{table}.txt')
+
+
+    with lock:
+        if os.path.exists(f'temp_reports/12{table}'):
+            os.remove(f'temp_reports/12{table}')
+            print('удаляем 12 файл')
+        if os.path.exists(f'temp_reports/5{table}'):
+            os.remove(f'temp_reports/5{table}')
+            print('удаляем 5 файл')
+        if os.path.exists(f'temp_reports/13{table}'):
+            os.remove(f'temp_reports/13{table}')
+            print('удаляем 13 файл')
+
+
+def temp_rep(text, lock):
+    with lock:
+        print('оставляет 12 файл')
+        soup = BeautifulSoup(text, 'lxml')
+        table = soup.find('openorder').get('table')
+        open(f'temp_reports/12{table}', 'w')
 
 
 def close_check(text, lock):
@@ -34,6 +85,8 @@ def close_check(text, lock):
             os.remove(f'temp_eat/{table}.txt')
         if os.path.exists(f'temp_discount/{table}.txt'):
             os.remove(f'temp_discount/{table}.txt')
+        if os.path.exists(f'temp_reports/3{table}.txt'):
+            os.remove(f'temp_reports/3{table}.txt')
 
 
 def delprech(text, bot, lock):
@@ -135,8 +188,7 @@ def temp_check(text, bot, lock):
         soup = BeautifulSoup(text, 'lxml')
         table1 = soup.find('storecheck')
         table = table1.get('table')
-        print(type(table1))
-
+        open(f'temp_reports/13{table}', 'w')
         time = soup.find('sysparams').get('time')
         offic = soup.find('loginperson').get('name')
         offic_del = soup.find('waiter').get('name')
@@ -209,7 +261,7 @@ def temp_check_screen(text, bot, lock):
         summary = soup.find('screencheck').get('sum')
         time = soup.find('sysparams').get('time')
         offic = soup.find('loginperson').get('name')
-
+        offic_del = soup.find('waiter').get('name')
         datases = soup.find_all('checkline')
         datas = list()
         first = True
@@ -234,6 +286,21 @@ def temp_check_screen(text, bot, lock):
         a = str()
         disc_text = str()
         coutn = 0
+        if os.path.exists(f'temp_reports/12{table}'):
+            a = str()
+            for data in datas:
+                name = data.split('%%')[0]
+                qnt = data.split('%%')[1]
+                message = str(f'        ВНИМАНИЕ УДАЛЕНИЕ БЛЮДА\n'
+                              f'-----------------------------------\n'
+                              f'Официант {offic}\n'
+                              f'Удалил {offic_del}\n'
+                              f'Стол {table}\n'
+                              f'Дата {time}\n'
+                              f'Удалено {name}\n'
+                              f'Cтало 0\n\n')
+                a += message
+            open(f'temp_reports/3{table}.txt', 'w', encoding='UTF-8').write(a)
         for data in datas:
             name = data.split('%%')[0]
             qnt = data.split('%%')[1]

@@ -31,15 +31,24 @@ def server_pooling(bot, lock):
                 se = len(textes) - 20
                 sre = len(textes)
                 partec = textes[0:20]
-                if '<DeletePrecheck' in partec or '<ScreenCheck' in partec or '<DeleteCheck' in partec or '<StoreCheck' in partec or '<CloseCheck' in partec:
+                if '<DeletePrecheck' in partec \
+                        or '<ScreenCheck' in partec or \
+                        '<DeleteCheck' in partec or \
+                        '<StoreCheck' in partec or \
+                        '<QuitOrder' in partec or \
+                        '<OpenOrder' in partec or \
+                        '<CloseCheck' in partec:
+
                     ifwanted = True
                     print('То, что нужно')
 
-                if '</DeletePrecheck>' in textes[se:sre] or '</ScreenCheck>' in textes[
-                                                                                se:sre] or '</DeleteCheck>' in textes[
-                                                                                                               se:sre] or '</StoreCheck>' in textes[
-                                                                                                                                             se:sre] or '</CloseCheck>' in textes[
-                                                                                                                                                                           se:sre]:
+                if '</DeletePrecheck>' in textes[se:sre]\
+                        or '</ScreenCheck>' in textes[se:sre] \
+                        or '</DeleteCheck>' in textes[se:sre] \
+                        or '</StoreCheck>' in textes[se:sre] \
+                        or '</QuitOrder>' in textes[se:sre] \
+                        or '</OpenOrder>' in textes[se:sre] \
+                        or '</CloseCheck>' in textes[se:sre]:
                     if byted:
                         new_textes = temp + textes
                         textes = new_textes

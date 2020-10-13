@@ -124,11 +124,12 @@ def send_text(message):
     if fisterly or int((n2 - n1).total_seconds()) > 10800:
         fisterly = False
         getsss()
-        if request_worker.check_lic_day() == 'Лизцензия заканчивается через 5 дней' and not os.path.exists('asdf.txt'):
+        if request_worker.check_lic_day() == 'Лизцензия заканчивается через 5 дней' :
+            if not os.path.exists('asdf.txt'):
 
-            with lock:
-                open('asdf.txt', 'w+')
-                addons.send_new_alarm(request_worker.check_lic_day(), 'subscrubers/Alarm_subs.txt', bot, lock)
+                with lock:
+                    open('asdf.txt', 'w+')
+                    addons.send_new_alarm(request_worker.check_lic_day(), 'subscrubers/Alarm_subs.txt', bot, lock)
 
 
         else:

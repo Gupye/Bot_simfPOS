@@ -38,20 +38,21 @@ def check_hitruga(text, bot, lock):
     open(f'temp_reports/12{table}', 'w')
     if os.path.exists(f'temp_reports/12{table}') and not os.path.exists(
             f'temp_reports/13{table}') and not os.path.exists(f'temp_reports/5{table}'):
-        file = open(f'temp_reports/3{table}.txt', 'r', encoding='UTF-8').readlines()
-        message = str()
-        for fil in file:
-
-                message += fil
-        addons.send_new_alarm(message, 'subscrubers/Alarm_subs.txt', bot, lock)
-        if os.path.exists(f'temp_table/{table}.txt'):
-            os.remove(f'temp_table/{table}.txt')
-        if os.path.exists(f'temp_eat/{table}.txt'):
-            os.remove(f'temp_eat/{table}.txt')
-        if os.path.exists(f'temp_discount/{table}.txt'):
-            os.remove(f'temp_discount/{table}.txt')
         if os.path.exists(f'temp_reports/3{table}.txt'):
-            os.remove(f'temp_reports/3{table}.txt')
+            file = open(f'temp_reports/3{table}.txt', 'r', encoding='UTF-8').readlines()
+            message = str()
+            for fil in file:
+
+                    message += fil
+            addons.send_new_alarm(message, 'subscrubers/Alarm_subs.txt', bot, lock)
+            if os.path.exists(f'temp_table/{table}.txt'):
+                os.remove(f'temp_table/{table}.txt')
+            if os.path.exists(f'temp_eat/{table}.txt'):
+                os.remove(f'temp_eat/{table}.txt')
+            if os.path.exists(f'temp_discount/{table}.txt'):
+                os.remove(f'temp_discount/{table}.txt')
+            if os.path.exists(f'temp_reports/3{table}.txt'):
+                os.remove(f'temp_reports/3{table}.txt')
 
 
     with lock:
@@ -288,7 +289,11 @@ def temp_check_screen(text, bot, lock):
         coutn = 0
         if os.path.exists(f'temp_reports/12{table}'):
             a = str()
+            checkw = True
             for data in datas:
+                if float(qnt) != 0:
+                    checkw = False
+                    break
                 name = data.split('%%')[0]
                 qnt = data.split('%%')[1]
                 message = str(f'        ВНИМАНИЕ УДАЛЕНИЕ БЛЮДА\n'
@@ -300,7 +305,8 @@ def temp_check_screen(text, bot, lock):
                               f'Удалено {name}\n'
                               f'Cтало 0\n\n')
                 a += message
-            open(f'temp_reports/3{table}.txt', 'w', encoding='UTF-8').write(a)
+            if checkw:
+                open(f'temp_reports/3{table}.txt', 'w', encoding='UTF-8').write(a)
         for data in datas:
             name = data.split('%%')[0]
             qnt = data.split('%%')[1]

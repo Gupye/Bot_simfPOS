@@ -22,7 +22,12 @@ dict_menu = {}
 config = configparser.ConfigParser()  # создаём объекта парсера
 config.read("settings.ini")  # читаем конфиг
 lock = threading.RLock()
+
+
 bot = telebot.TeleBot(setings.token, threaded=True)
+
+
+
 menu_markup = 'markup_report'
 markup_start = types.ReplyKeyboardMarkup(row_width=2)
 markup_start.add('Инфо')
@@ -149,6 +154,10 @@ def send_text(message):
                                f'Код ресторана: {rest_codeddd}\n' \
                                f'{request_worker.chekc_lic()}'
                     bot.send_message(message.chat.id, messagec)
+
+                elif message.text.lower() == 'лог':
+                    doc = open('log.txt', 'rb')
+                    bot.send_document(message.chat.id, doc)
 
                 elif message.text.lower() == 'отчёты sql':
                     bot.send_message(message.chat.id, 'Выберите отчёт', reply_markup=markup_sql)

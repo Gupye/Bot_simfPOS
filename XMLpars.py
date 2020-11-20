@@ -310,8 +310,8 @@ def temp_check_screen(text, bot, lock):
         for data in datas:
             name = data.split('%%')[0]
             qnt = data.split('%%')[1]
-            if table == '':
-                delete_eat_fast(name, qnt, lock, table, offic, bot, time)
+
+            delete_eat_fast(name, qnt, lock, table, offic, bot, time)
             a += format_prech(name, qnt, datases[coutn].get("price"))
             coutn += 1
         try:

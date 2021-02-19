@@ -68,7 +68,6 @@ def server_pooling(bot, lock):
             except Exception as e:
                 textes = pal.decode(encoding="WINDOWS-1251")
 
-                d.start()
                 clear = ['temp_reports/buffer.txt', 'temp_reports/current_money.txt', 'temp_reports/deleted_check.txt',
                          'temp_reports/deleted_prech.txt', 'temp_reports/eaten_eat.txt', 'temp_reports/deleted_disc.txt'
                     , 'temp_reports/fast_sell.txt', 'temp_reports/boun_rec.txt', 'temp_reports/discount.txt',

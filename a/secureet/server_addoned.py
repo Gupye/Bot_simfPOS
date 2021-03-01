@@ -49,7 +49,7 @@ def add_list(rest_code, nickname, passw):
     config = configparser.ConfigParser()  # создаём объекта парсера
     config.read('a/secureet/ser.ini')
     try:
-        if request_worker.add_list() == '200':
+        if request_worker.add_list(passw) == '200':
             open(f'a/secureet/{rest_code}.txt', 'a', encoding='UTF-8').write(nickname + '\n')
             return "200"
         else:
